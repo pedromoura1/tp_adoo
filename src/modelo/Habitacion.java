@@ -1,25 +1,27 @@
 package modelo;
 
 public class Habitacion {
-	private String tipoHabitacion;
+	private TipoHabitacion tipoHabitacion;
 	private Extras extras;
 	private int numeroHabitacion;
 	private int cantidadHuespedes;
-	private float precioHabitacion;
+	private double precioHabitacion;
+	private boolean isLibre;
 	
-	public Habitacion(String tipoHabitacion, Extras extras, int numeroHabitacion, int cantidadHuespedes, float precioHabitacion) {
+	public Habitacion(TipoHabitacion tipoHabitacion, Extras extras, int numeroHabitacion, int cantidadHuespedes, double precioHabitacion, boolean isLibre) {
 		this.tipoHabitacion = tipoHabitacion;
 		this.extras = extras;
 		this.numeroHabitacion = numeroHabitacion;
 		this.cantidadHuespedes = cantidadHuespedes;
 		this.precioHabitacion = precioHabitacion;
+		this.isLibre = isLibre;
 	}
 
-	public String getTipoHabitacion() {
+	public TipoHabitacion getTipoHabitacion() {
 		return tipoHabitacion;
 	}
 
-	public void setTipoHabitacion(String tipoHabitacion) {
+	public void setTipoHabitacion(TipoHabitacion tipoHabitacion) {
 		this.tipoHabitacion = tipoHabitacion;
 	}
 
@@ -47,16 +49,29 @@ public class Habitacion {
 		this.cantidadHuespedes = cantidadHuespedes;
 	}
 
-	public float getPrecioHabitacion() {
+	public double getPrecioHabitacion() {
 		return precioHabitacion;
 	}
 
-	public void setPrecioHabitacion(float precioHabitacion) {
+	public void setPrecioHabitacion(double precioHabitacion) {
 		this.precioHabitacion = precioHabitacion;
 	}
 	
+	public boolean isLibre() {
+		return isLibre;
+	}
+
+	public void setLibre(boolean isLibre) {
+		this.isLibre = isLibre;
+	}
+
 	public void crearHabitacion() {
 		
+	}
+	
+	@Override
+	public TipoHabitacion toString() {
+	    return tipoHabitacion;
 	}
 	
 	

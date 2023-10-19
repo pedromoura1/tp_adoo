@@ -1,50 +1,49 @@
 package modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Reserva {
-	private Date fechaReserva;
-	private Date fechaCheckIn;
-	private Date fechaCheckOut;
+	private LocalDate fechaReserva;
+	private LocalDate fechaCheckIn;
+	private LocalDate fechaCheckOut;
 	private Cliente clienteRegistrado;
 	private Huesped huesped;
 	private MedioDePago medioPago;
 	private Estado estado;
 	private List<Habitacion> listaHabitacion;
+	private TipoHabitacion tipoHabitacion;
 	
-	public Reserva(Date fechaReserva, Date fechaCheckIn, Date fechaCheckOut, Cliente clienteRegistrado, Huesped huesped, MedioDePago medioPago, Estado estado, List<Habitacion> listaHabitacion) {
-		this.fechaReserva = fechaReserva;
+	public Reserva(LocalDate fechaReserva, LocalDate fechaCheckIn, LocalDate fechaCheckOut, Cliente clienteRegistrado, Huesped huesped, MedioDePago medioPago, TipoHabitacion tipoHabitacion) {
 		this.fechaCheckIn = fechaCheckIn;
 		this.fechaCheckOut = fechaCheckOut;
 		this.clienteRegistrado = clienteRegistrado;
 		this.huesped = huesped;
 		this.medioPago = medioPago;
-		this.estado = estado;
-		this.listaHabitacion = listaHabitacion;
+		this.tipoHabitacion = tipoHabitacion;
 	}
 	
-	public Date getFechaReserva() {
+	public LocalDate getFechaReserva() {
 		return fechaReserva;
 	}
 	
-	public void setFechaReserva(Date fechaReserva) {
+	public void setFechaReserva(LocalDate fechaReserva) {
 		this.fechaReserva = fechaReserva;
 	}
 	
-	public Date getFechaCheckIn() {
+	public LocalDate getFechaCheckIn() {
 		return fechaCheckIn;
 	}
 	
-	public void setFechaCheckIn(Date fechaCheckIn) {
+	public void setFechaCheckIn(LocalDate fechaCheckIn) {
 		this.fechaCheckIn = fechaCheckIn;
 	}
 	
-	public Date getFechaCheckOut() {
+	public LocalDate getFechaCheckOut() {
 		return fechaCheckOut;
 	}
 	
-	public void setFechaCheckOut(Date fechaCheckOut) {
+	public void setFechaCheckOut(LocalDate fechaCheckOut) {
 		this.fechaCheckOut = fechaCheckOut;
 	}
 	

@@ -1,14 +1,17 @@
 package modelo;
 
+import java.time.LocalDate;
+import java.util.List;
+
 public class Cliente {
 	private String nombre;
 	private String apellido;
-	private String dni;
+	private int dni;
 	private int telefono;
 	private String mail;
 	private PreferenciaDeContacto contacto;
 	
-	public Cliente(String nombre, String apellido, String dni, int telefono, String mail, PreferenciaDeContacto contacto) {
+	public Cliente(String nombre, String apellido, int dni, int telefono, String mail, PreferenciaDeContacto contacto) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
@@ -33,11 +36,11 @@ public class Cliente {
 		this.apellido = apellido;
 	}
 
-	public String getDni() {
+	public int getDni() {
 		return dni;
 	}
 
-	public void setDni(String dni) {
+	public void setDni(int dni) {
 		this.dni = dni;
 	}
 
@@ -65,7 +68,31 @@ public class Cliente {
 		this.contacto = contacto;
 	}
 	
+	
+	public Reserva crearNuevaReserva(LocalDate fechaReserva, LocalDate fechaCheckIn, LocalDate fechaCheckOut, Huesped huesped, MedioDePago medioPago, TipoHabitacion tipoHabitacion) {
+	    List<Habitacion> habitacionesDisponibles = Hotel.buscarHabitacionesDisponibles(tipoHabitacion);
+
+	    if (!habitacionesDisponibles.isEmpty()) {
+	        Reserva nuevaReserva = new Reserva(fechaReserva, fechaCheckIn, fechaCheckOut, this, huesped, medioPago, tipoHabitacion);
+	        nuevaReserva.setEstado(Estado.Pendiente);
+
+	        // Asignar habitaciones disponibles a la reserva
+	        nuevaReserva.setListaHabitacion(habitacionesDisponibles);
+
+	        // Marcar las habitaciones como ocupadas
+	        for (Habitacion habitacion : habitacionesDisponibles) {
+	            habitacion.setLibre(false);
+	        }
+
+	        return nuevaReserva;
+	    } else {
+	        System.out.println("No hay habitaciones disponibles de tipo " + tipoHabitacion);
+	        return null; // Opcional: retornar null si no hay habitaciones disponibles
+	    }
+	}
 	public void actualizar() {
 		
 	}
+	
+	
 }
